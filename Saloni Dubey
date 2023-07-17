@@ -1,0 +1,32 @@
+# Guess the Number Game Python Project (user)
+# This is the formlaus that make it easy
+# Minimum number of guessing = log2(Upper bound – lower bound + 1)
+
+import random
+import math
+
+Lower_=int(input("enter a number:"))
+upper=int(input("enter a number:"))
+
+# Generating radom number
+x=random.randint(Lower_,upper)
+print("\n\tyou've only",
+      round(math.log(upper-Lower_+1,2)),
+    " chances to guess the integer!\n")
+count=0
+while count <math.log(upper-Lower_+1,2):
+    count+=1
+    guess=int(input("guess a number:-"))
+    # condition check
+    if x==guess:
+        print("Congratulations you did it in ",count, " try")
+        break
+    elif x > guess:
+        print("You guess to small")
+        break
+    elif x<guess:
+        print("you guess too large")
+# If Guessing is more than required guesses, show this output.
+if count >= math.log(upper - Lower_ + 1, 2):
+    print("\nThe number is %d" % x)
+    print("\tBetter Luck Next time!")
